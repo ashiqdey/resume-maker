@@ -6,7 +6,7 @@ function CityAutocomplete({ country, ...rest }) {
       placeholder={country ? "Search City" : "Please select country first"}
       className="form-control"
       disabled={!country}
-      apiKey="AIzaSyDT2Rblpw0cPJMRlNpzMn9WxuTxa3zBJXI"
+      apiKey=""
       // defaultValue={"Please select country"}
       // onBlur={() => handleBlur({ target: { name: "city" } })}
       // onPlaceSelected={(place) => {
