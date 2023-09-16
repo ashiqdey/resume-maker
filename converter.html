@@ -1,0 +1,30 @@
+<script type="text/javascript">
+
+console.log(`
+const r = \`\`;
+convert(r);
+	`);
+
+function convert(raw){
+	//replace mb-5, col-8
+	raw = raw.replace(/mt-/g, "mt_");
+	raw = raw.replace(/mr-/g, "mr_");
+	raw = raw.replace(/ml-/g, "ml_");
+	raw = raw.replace(/mb-/g, "mb_");
+	raw = raw.replace(/mx-/g, "mx_");
+	raw = raw.replace(/px-/g, "px_");
+	raw = raw.replace(/p-/g, "p_");
+	raw = raw.replace(/pl-/g, "pl_");
+	raw = raw.replace(/pr-/g, "pr_");
+	raw = raw.replace(/pb-/g, "pb_");
+	raw = raw.replace(/pt-/g, "pt_");
+	raw = raw.replace(/border-/g, "border_");
+	raw = raw.replace(/col-/g, "col");
+	raw = raw.replace(/text-right/g, "textRight");
+
+
+	console.log(raw)
+}
+
+
+</script>

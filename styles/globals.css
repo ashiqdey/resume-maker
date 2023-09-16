@@ -1,0 +1,48 @@
+html,
+body {
+  background-color: rgb(230, 235, 240);
+  padding: 20px;
+}
+
+.react-pdf__Page__textContent {
+  display: none;
+}
+
+.resume-preview .react-pdf__Page__textContent {
+  z-index: 10;
+}
+
+.resume-preview canvas {
+  border-radius: 6px;
+  margin: 0 auto 30px;
+}
+
+.resume-preview .react-pdf__Page:last-child canvas {
+  margin-bottom: 0;
+}
+
+.resume-thumbnail .name {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-thumbnail:hover .name,
+.resume-thumbnail.active .name {
+  display: flex;
+}
+
+.resume-editor-sidebar {
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+}
+.preview-img {
+  border-left: 5px solid #fff;
+}
+
+.aifs {
+  align-items: flex-start;
+}
+.jcc {
+  justify-content: center;
+}
