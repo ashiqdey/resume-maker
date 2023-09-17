@@ -16,7 +16,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 // import Resumes from "../widgets/resume/resumes";
 import { ResumeFullStack } from "../widgets/resume";
 
-import useWindowSize from "../hooks/useWindowSize";
 import profile from "../data/resume-profiles/profile1";
 
 const templateId = 0;
@@ -25,12 +24,10 @@ const templateId = 0;
 
 
 export default function Index() {
-  const screen = useWindowSize();
-  const cardRef = useRef();
 
-  const [withViewer, setWithViewer] = useState(true);
+  const [withViewer, setWithViewer] = useState(false);
+  const width = 600;
 
-  const [width, setWidth] = useState(300);
   const [page, setPage] = useState({
     current: 1,
     total: 0,
@@ -53,18 +50,6 @@ export default function Index() {
       total: pdf?.numPages || 1,
     });
   };
-
-  useEffect(() => {
-    if (screen.width < 568) {
-      setWidth(cardRef.current.offsetWidth - 24);
-    } else if (screen.width <= 1366) {
-      setWidth(cardRef.current.offsetWidth - 42);
-    } else {
-      setWidth(600);
-    }
-  }, [screen]);
-
-
 
 
 
@@ -100,7 +85,7 @@ export default function Index() {
           <Col xs={12} lg={withViewer ? 12 : 8}>
 
             <Card className="bg-light">
-              <Card.Body className="resume-preview dev" ref={cardRef}>
+              <Card.Body className="resume-preview dev">
 
                 <div className="d-flex aifs jcc">
                   {!instance.loading && (
