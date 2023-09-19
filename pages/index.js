@@ -74,7 +74,7 @@ export default function Index() {
                   size="sm"
                   as="a"
                   href={instance.url}
-                  download={`${profile.name}-${profile.jobTitle}.pdf`}
+                  download={`${profile.name.replace(" ","-")}-Full-stack-dev.pdf`}
                 >
                   Download
                 </Button>

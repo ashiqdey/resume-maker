@@ -58,6 +58,7 @@ Font.register({
 function ResumeFullStack({
   name,
   jobTitle = "Job test",
+  summary,
   skills = [],
   portfolio,
   experiences = [],
@@ -112,6 +113,11 @@ function ResumeFullStack({
 
     w33: { width: "33%" },
     w66: { width: "66%" },
+
+    mb5: { marginBottom: 5 },
+    mb10: { marginBottom: 10 },
+    mb15: { marginBottom: 15 },
+    mb20: { marginBottom: 20 },
 
     imageWrap: { width: "196mm", position: "absolute", top: 20, left: 20 },
 
@@ -237,7 +243,8 @@ function ResumeFullStack({
 
     // -------------skills-----
     skills: {
-      marginBottom: 15,
+      marginTop: 10,
+      marginBottom: 25,
     },
     skill: {
       backgroundColor: "#f4f4f4",
@@ -283,6 +290,9 @@ function ResumeFullStack({
       top: 20,
       left: 9,
     },
+    expsummaryDot: {
+      opacity: 0.4,
+    },
     summaryDot: {
       backgroundColor: css.grey3,
       height: 4,
@@ -307,6 +317,13 @@ function ResumeFullStack({
       top: -6,
       left: -12,
     },
+
+    o0: {
+      // backgroundColor: "red",
+      opacity: 0,
+      fontSize:2,
+      top:120,
+    },
   });
   // ----------END styles----------
 
@@ -319,13 +336,8 @@ function ResumeFullStack({
   };
 
   return (
-    <Document
-      author={name}
-      title={name}
-      subject={`${name} - ${jobTitle}`}
-      
-    >
-      <Page size="A4" {...props} style={s.page} >
+    <Document author={name} title={name} subject={`${name} - ${jobTitle}`}>
+      <Page size="A4" {...props} style={s.page}>
         {/* {config.image && image && (
           <View fixed style={s.imageWrap}>
             <Image style={s.image} src={image} />
@@ -354,6 +366,11 @@ function ResumeFullStack({
                     </Link>
                   </View>
                 </Text>
+              </View>
+
+              <View style={getClass("o0 pa")}>
+                <Text style={getClass("h3")}>Summary & Objective</Text>
+                <Text>{summary}</Text>
               </View>
             </View>
 
@@ -407,7 +424,9 @@ function ResumeFullStack({
               </View>
 
               <View style={getClass("row flexWrap experiences")}>
-                <Text style={getClass("h3")}>Experiences</Text>
+                <Text style={getClass("h3 mb10")}>
+                  Professional Experiences
+                </Text>
                 {experiences.map((item, i) => (
                   <ExpItems
                     key={`exp-${i}`}
@@ -464,22 +483,14 @@ const ExpItems = ({ company, position, date, summary, getClass, isLast }) => {
       {!isLast && <View style={getClass("experienceLine pa")} />}
 
       <Text style={getClass("h4")}>{company}</Text>
-      <Text style={getClass("h5 grey2")}>
+      <Text style={getClass("h5 grey2 mb5")}>
         {position} &bull; {date}
       </Text>
 
       {summary.map((item, i) => (
-        <View key={`summary-${i}`} style={getClass("row")}>
-          <View style={getClass("summaryDot")} />
-          <View>
-            <Text
-              key={`summary-${i}`}
-              
-              style={getClass("summary grey3")}
-            >
-              {item}
-            </Text>
-          </View>
+        <View key={`summary-${i}`} style={getClass("row grey3")}>
+          <Text style={getClass("expsummaryDot")}>{"\u2022   "}</Text>
+          <Text style={getClass("summary")}>{item}</Text>
         </View>
       ))}
     </View>
@@ -490,7 +501,7 @@ const ProjectsItems = ({ title, list, getClass }) => {
   return (
     <View style={getClass("column project pr")}>
       <View style={getClass("projectDot pa")} />
-      <Text style={getClass("h3")}>{title}</Text>
+      <Text style={getClass("h3 mb10")}>{title}</Text>
 
       {list.map((item, i) => (
         <View key={`summary-${i}`} style={getClass("row")}>
